@@ -2,7 +2,7 @@ import React, {useContext}  from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
-const Login = () => {
+const Login = ({children}) => {
     const {user, signIn} = useContext(AuthContext);
 
     const handleLogin = (e) => {
@@ -11,6 +11,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        form.reset();
 
         signIn(email, password)
         .then(result=>{
